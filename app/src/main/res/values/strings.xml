@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EasyOTP</string>
+    <string name="permission_sms_read_and_receive_message">Please grant the permission to read and receive SMS</string>
 </resources>
