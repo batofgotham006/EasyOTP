@@ -1,7 +1,9 @@
 package com.batofgotham.easyotp.message
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -30,18 +32,17 @@ class MessageAdapter : ListAdapter<Message, MessageAdapter.MessageViewHolder>(Di
 
     class MessageViewHolder(private val binding : MessageListItemBinding) : RecyclerView.ViewHolder(binding.root){
 
-//        init{
-//            binding.setClickListener{ view->
-//                binding.task?.let{ task->
-//                    navigateToEditFragment(task,view)
-//                }
-//            }
-//        }
+        init{
+            binding.setClickListener{ view->
+                binding.message?.content.let{ message->
+                    navigateToDetailFragment(message,view)
+                }
+            }
+        }
 
-//        private fun navigateToEditFragment(task : Task,view : View){
-//            view.findNavController().navigate(TaskFragmentDirections.actionTaskFragmentToTaskEditFragment(
-//                task.taskTitle,task.taskDescription,task.priorityValue,task.taskDate,task.taskTime,task.alarmFlag,task.taskId))
-//        }
+        private fun navigateToDetailFragment(message: String?,view : View){
+            view.findNavController().navigate(MessageFragmentDirections.actionMessageFragmentToMessageDetailFragment())
+        }
 
 
         fun bind(message: Message){

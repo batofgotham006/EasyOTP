@@ -15,5 +15,10 @@
     <fragment
         android:id="@+id/messageDetailFragment"
         android:name="com.batofgotham.easyotp.messagedetail.MessageDetailFragment"
-        android:label="MessageDetailFragment" />
+        android:label="MessageDetailFragment" >
+        <argument
+            android:name="message"
+            app:argType="string"
+            android:defaultValue="This message has no content." />
+    </fragment>
 </navigation>
