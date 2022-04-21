@@ -43,6 +43,9 @@ class MessageFragment : Fragment(),EasyPermissions.PermissionCallbacks {
         requestSmsPermission()
         getMessages()
 
+        val adapter = MessageAdapter()
+        adapter.submitList(messagesList)
+        binding.messagesRv.adapter = adapter
 
         return binding.root
     }
@@ -96,7 +99,7 @@ class MessageFragment : Fragment(),EasyPermissions.PermissionCallbacks {
 
                     val person: String = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.CREATOR))
                     val body: String = cursor.getString(cursor.getColumnIndexOrThrow(Telephony.Sms.BODY))
-                    val message = Message("person",body)
+                    val message = Message(person,body)
                     messagesList.add(message)
                     cursor.moveToNext()
                     i++
